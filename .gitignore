@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+.wrangler/
+proxy/node_modules/
+proxy/.dev.vars
+
+# Contains the Paxa API key in plain sight — never commit.
+paxalab-how-to-use.png
+src/agent/secrets.ts
