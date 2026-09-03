@@ -1,0 +1,252 @@
+<title>a11y-mcp Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+/>
+<style>
+  :root {
+    --bg: #f6f5f9;
+    --surface: #ffffff;
+    --ink: #191722;
+    --ink-soft: #4a4757;
+    --ink-faint: #6f6b7e;
+    --line: #e4e1ec;
+    --accent: #6d5ef0;
+    --accent-soft: #efedfd;
+    --good: #1f7a4d;
+    --good-bg: #e6f4ec;
+    --warn: #9a6400;
+    --warn-bg: #fbf1dc;
+    --crit: #b23b52;
+    --crit-bg: #fbe7ec;
+    --radius: 14px;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #131118;
+      --surface: #1c1a24;
+      --ink: #ece9f4;
+      --ink-soft: #b6b1c6;
+      --ink-faint: #8b8699;
+      --line: #2e2b38;
+      --accent: #a99bff;
+      --accent-soft: #241f3a;
+      --good: #6fd39c;
+      --good-bg: #122c1f;
+      --warn: #e6b45a;
+      --warn-bg: #2e2510;
+      --crit: #f0899e;
+      --crit-bg: #2f1620;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131118;
+    --surface: #1c1a24;
+    --ink: #ece9f4;
+    --ink-soft: #b6b1c6;
+    --ink-faint: #8b8699;
+    --line: #2e2b38;
+    --accent: #a99bff;
+    --accent-soft: #241f3a;
+    --good: #6fd39c;
+    --good-bg: #122c1f;
+    --warn: #e6b45a;
+    --warn-bg: #2e2510;
+    --crit: #f0899e;
+    --crit-bg: #2f1620;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 72px 24px 96px;
+  }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 8px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(30px, 5vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 12px;
+  }
+  .meta { color: var(--ink-faint); font-size: 14px; margin: 0; }
+  .meta b { color: var(--ink-soft); font-weight: 500; }
+
+  h2 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    margin: 48px 0 12px;
+  }
+  p { margin: 0 0 16px; color: var(--ink-soft); }
+  p.lead { color: var(--ink); font-size: 17px; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .summary {
+    background: var(--accent-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin: 28px 0 8px;
+  }
+  .summary p { margin: 0; color: var(--ink); }
+  .summary p + p { margin-top: 12px; }
+
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0 8px;
+  }
+  .row {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .row h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tag.sent { background: var(--warn-bg); color: var(--warn); }
+  .tag.local { background: var(--good-bg); color: var(--good); }
+  .row p { margin: 0; font-size: 14px; }
+  .dest {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+
+  ul { margin: 0 0 16px; padding-left: 20px; color: var(--ink-soft); }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--accent); }
+
+  .note {
+    border-left: 3px solid var(--crit);
+    background: var(--crit-bg);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 20px 0;
+  }
+  .note p { margin: 0; color: var(--ink); font-size: 14.5px; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint);
+    font-size: 13.5px;
+  }
+  footer a { color: var(--ink-soft); }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Chrome Extension &middot; Privacy Policy</p>
+    <h1>a11y-mcp Privacy Policy</h1>
+    <p class="meta"><b>Effective:</b> 4 September 2026 &nbsp;&middot;&nbsp; <b>Applies to:</b> the a11y-mcp browser extension</p>
+  </header>
+
+  <div class="summary">
+    <p><strong>In plain terms.</strong> a11y-mcp has no servers of its own and stores none of your data. It only runs when you press its microphone button. To fill a form by voice, it sends the text of the form fields you are on, and the input you speak, to two processing services. It never sells your data and never tracks you across the web.</p>
+  </div>
+
+  <h2>What the extension does</h2>
+  <p class="lead">a11y-mcp lets you read, fill, and submit web forms by voice — built so a Thai speaker, a blind user, or anyone who cannot easily use a keyboard can complete an English form. It reads the form's fields aloud, fills them from what you say, and submits only after you explicitly confirm.</p>
+
+  <h2>What data is processed, and where it goes</h2>
+  <p>Everything below happens only while you are actively using the extension on a page — when you press the microphone and speak. Nothing runs in the background.</p>
+
+  <div class="flow">
+    <div class="row">
+      <h3>Your voice <span class="tag local">Stays on your device</span></h3>
+      <p>Speech is captured and turned into text by your browser's built-in Web Speech API. The audio itself is not sent anywhere by this extension.</p>
+      <p class="dest">Processed by: your browser's speech recognition</p>
+    </div>
+    <div class="row">
+      <h3>Form field labels &amp; the values you dictate <span class="tag sent">Sent for processing</span></h3>
+      <p>The labels and structure of the form on the current page, plus the text you speak, are sent to OpenAI so the assistant can decide which value belongs in which field and how to correct it.</p>
+      <p class="dest">Sent to: OpenAI &mdash; api.openai.com</p>
+    </div>
+    <div class="row">
+      <h3>Text to read aloud &amp; translate <span class="tag sent">Sent for processing</span></h3>
+      <p>Field labels and free-text values are sent to Paxa Labs to translate between English and Thai and to generate the spoken Thai audio you hear.</p>
+      <p class="dest">Sent to: Paxa Labs &mdash; api.paxalabs.com</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><strong>Please note:</strong> web forms often contain personal information — your name, email, phone, or ID numbers. When you use the extension on such a form, that content is included in the text sent to the processors above. Only use a11y-mcp on forms whose contents you are comfortable sharing with those services.</p>
+  </div>
+
+  <h2>What we do not do</h2>
+  <ul>
+    <li>We operate <strong>no servers</strong> and keep <strong>no database</strong> — the extension has nowhere to store your data.</li>
+    <li>We do <strong>not sell, rent, or share</strong> your data for advertising, and we do not track you across sites.</li>
+    <li>We do <strong>not remember data across pages or sessions</strong> — nothing you enter on one form is carried to another.</li>
+    <li>We run <strong>no analytics</strong> and collect no usage profiles.</li>
+  </ul>
+
+  <h2>Third-party processors</h2>
+  <p>The extension relies on these services to function. Data sent to them is handled under their own privacy policies:</p>
+  <ul>
+    <li><strong>OpenAI</strong> — interprets your request and decides the form values. See <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a>.</li>
+    <li><strong>Paxa Labs</strong> — Thai translation and text-to-speech. See Paxa Labs' privacy terms at <a href="https://paxalabs.com" target="_blank" rel="noopener">paxalabs.com</a>.</li>
+  </ul>
+
+  <h2>Data retention</h2>
+  <p>The extension itself retains nothing beyond the current page session — closing the tab discards everything. Any retention by OpenAI or Paxa Labs is governed by their respective policies, linked above.</p>
+
+  <h2>Your choices</h2>
+  <p>The extension is inert until you press its microphone button, so you control when any data is sent. You can stop it at any time by not pressing the button, or remove it entirely from <code>chrome://extensions</code>.</p>
+
+  <h2>Children</h2>
+  <p>a11y-mcp is a general-purpose accessibility tool and is not directed at children under 13.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the updated version will be posted at this URL with a new effective date.</p>
+
+  <footer>
+    <p><strong>Contact.</strong> Questions about this policy or your data: <a href="mailto:kongphopleo@gmail.com">kongphopleo@gmail.com</a></p>
+  </footer>
+</div>

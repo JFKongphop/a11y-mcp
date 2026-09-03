@@ -1,0 +1,94 @@
+a11y-mcp - Speak Thai. Fill any English web form. Never touch the keyboard.
+
+a11y-mcp turns any semantically sound web form into typed tools an AI agent can
+call - then lets a Thai speaker read, fill, correct, and submit that form entirely
+by voice, with every confirmation and error spoken back in Thai before anything is
+sent.
+
+
+THE PROBLEM
+
+Two failures, stacked:
+
+1. Agents "use" the web by guessing pixels. They guess which box is which, guess
+   wrong, and when a page rejects a value they just see a red border - with no idea
+   why.
+
+2. Accessibility tooling is built for English. A Thai person facing an English-only
+   visa, university, or airline form is stuck. These forms are well-marked-up and
+   completely unusable if you don't read English - and nobody translates them.
+
+Our lead user is a Thai person in front of an English form. Served for free: blind,
+low-vision, motor-impaired, and elderly users - anyone who can't reliably use a
+mouse and keyboard.
+
+
+WHAT IT DOES
+
+The page exposes typed WebMCP tools (document.modelContext). A GPT-4o-mini brain
+listens to Thai speech, calls those tools, and the page answers with structured,
+machine-readable feedback instead of a red border. The agent self-corrects, asks in
+Thai when unsure, and never submits without a human clicking confirm.
+
+
+HOW IT USES WEBMCP (THE CORE)
+
+Four deliberately-scoped tools:
+
+- describe_form() - full field structure, types, constraints.
+
+- read_form() - the fields to read aloud to someone who can't see the page.
+
+- fill_form(values, confirmed?) - validates each value, returns a
+  filled / failed / needs_human split. "failed" is reactive (page rejected a value,
+  so the agent retries); "needs_human" is preemptive (parser was unsure, so nothing
+  is filled and the agent must ask). "confirmed" is the only way a low-confidence
+  field gets filled - after explicit human approval.
+
+- submit_form() - a separate, human-gated tool that opens a confirmation overlay and
+  never fires alone.
+
+Error text comes from stable Thai templates keyed by an error enum - never model
+prose, so the same failure sounds identical every time and works with no model call.
+
+
+WHAT MAKES IT NOVEL
+
+- Reads the form aloud in Thai - closes the loop: perceive, fill, confirm - not just
+  write.
+
+- Preserve-or-translate per field - names stay in Latin script, free-text Thai
+  becomes English ("maa tiao" / vacation), and select values are matched
+  ("Thai" to TH).
+
+- Self-corrects from typed errors - the exact argument for WebMCP, shown live.
+
+- Asks in Thai and re-opens the mic - a real spoken clarification dialogue.
+
+- Honest confidence badge - a badly-marked-up site isn't a failure; the tool says so
+  instead of guessing.
+
+
+HOW WE BUILT IT
+
+TypeScript with Vite and the crxjs plugin, Zod for the schema-once tool boundary, an
+MV3 extension with a MAIN-world content script (document.modelContext plus the brain)
+and an ISOLATED-world content script (Paxa plus the mic) bridged over postMessage.
+GPT-4o-mini turns Thai speech into tool calls; Paxa Labs provides Thai
+text-to-speech (voice "yoyo") and translation; the Web Speech API handles voice
+input.
+
+
+CHALLENGES
+
+The WebMCP spec is unstable - the API had moved from navigator.modelContext to
+document.modelContext and lost unregisterTool. We instrumented the live Chrome 152
+surface to discover the real contract (async registerTool, JSON-string schemas,
+duplicate-name errors) and rebuilt against it.
+
+
+WHAT'S NEXT
+
+Works on sites with reasonable semantics - the confidence badge tells the truth when
+they don't. Cross-page memory and custom non-input widgets are deliberately out of
+scope.
