@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>a11y-mcp</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        margin: 0;
+        width: 280px;
+        font: 13px/1.4 system-ui, sans-serif;
+        padding: 14px;
+      }
+      h1 { font-size: 14px; margin: 0 0 2px; }
+      .sub { color: #666; margin: 0 0 12px; font-size: 11px; }
+      .badge {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .chip {
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 12px;
+      }
+      .mapped { background: #e6f4ea; color: #137333; }
+      .ambiguous { background: #fef7e0; color: #b06000; }
+      .unlabeled { background: #fce8e6; color: #c5221f; }
+      .status { color: #666; font-size: 12px; }
+      @media (prefers-color-scheme: dark) {
+        .sub, .status { color: #aaa; }
+        .mapped { background: #0d3b1e; color: #7ee2a8; }
+        .ambiguous { background: #3d2f00; color: #ffd666; }
+        .unlabeled { background: #3d0f0c; color: #ff9c94; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>a11y-mcp</h1>
+    <p class="sub">Voice-operable forms · typed agent tools</p>
+    <div class="badge" id="badge" hidden></div>
+    <p class="status" id="status">Reading this tab…</p>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>
