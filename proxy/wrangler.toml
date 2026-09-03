@@ -1,0 +1,6 @@
+name = "a11y-mcp-proxy"
+main = "worker.ts"
+compatibility_date = "2024-11-01"
+
+# Set the key out-of-band, never in this file:
+#   wrangler secret put PAXA_API_KEY
